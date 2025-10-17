@@ -116,3 +116,8 @@ Given the tight timeline, we've designed fallback positions:
 - Chipyard configuration files and Hammer scripts included
 - Full AI/LLM prompt logs will be documented if any assistance tools are used
 
+## Team
+### Project Lead - Eleftherios Batzolis
+Graduate Computer Science Engineer | Mphil in Computer Engineering
+
+Specializing in RTL design and hardware acceleration with extensive experience in low-power SoC architecture. Passionate about leveraging cutting-edge hardware technologies to solve critical healthcare challenges. Previous projects include FPGA-based signal processing systems and custom ASIC designs for biomedical applications.
