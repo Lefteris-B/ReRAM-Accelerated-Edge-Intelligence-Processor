@@ -14,21 +14,22 @@ Our design uniquely exploits ReRAM's non-volatility and in-memory computing capa
 
 ## Technical Approach
 ### System Architecture
+```
 ┌─────────────────────────────────────────────────────────┐
-│                    SoC Top Level                         │
-├─────────────────────┬────────────────────────────────────┤
-│   RV32I Core        │     ReRAM Neural Accelerator       │
+│                    SoC Top Level                        │
+├─────────────────────┬───────────────────────────────────┤
+│   RV32I Core        │     ReRAM Neural Accelerator      │
 │   (Controller)      │  ┌────────────────────────────┐   │
 │                     │  │  NVM IP (32x32 Crossbar)   │   │
-│   ┌──────────┐     │  ├────────────────────────────┤   │
-│   │   I$     │     │  │    MAC Array (8 units)     │   │
-│   └──────────┘     │  ├────────────────────────────┤   │
+│   ┌──────────┐      │  ├────────────────────────────┤   │
+│   │   I$     │      │  │    MAC Array (8 units)     │   │
+│   └──────────┘      │  ├────────────────────────────┤   │
 │                     │  │   Activation Functions     │   │
-│   TileLink Bus     │  └────────────────────────────┘   │
-├─────────────────────┴────────────────────────────────────┤
-│  SRAM Scratchpad  │  SPI/I2C  │  GPIO  │  Timer         │
+│   TileLink Bus      │  └────────────────────────────┘   │
+├─────────────────────┴───────────────────────────────────┤
+│  SRAM Scratchpad    │  SPI/I2C  │  GPIO  │  Timer       │
 └─────────────────────────────────────────────────────────┘
-
+```
 ### Implementation Strategy
 
 1. **Base Platform**: Berkeley Chipyard framework with Rocket RISC-V core
@@ -37,6 +38,17 @@ Our design uniquely exploits ReRAM's non-volatility and in-memory computing capa
 4. **Verification**: Chipyard's existing test infrastructure + custom ReRAM tests
 5. **Physical Design**: Hammer flow targeting SKY130 PDK
 6. **Final Integration**: GDS generation with optional Caravel wrapper
+
+## Leveraging Berkeley Chipyard Framework
+### Why Chipyard is Critical to Our Success
+Our project extensively leverages the Berkeley Chipyard agile hardware development framework, enabling rapid SoC development through:
+Generator-based design methodology for parameterizable hardware
+FIRRTL compiler infrastructure for design optimization and instrumentation
+RoCC (Rocket Custom Coprocessor) interface for clean accelerator integration
+TileLink interconnect for coherent memory system design
+Hammer unified physical design flow for SKY130 tapeout
+FireSim integration for FPGA prototyping and validation
+RISC-V toolchain for software development and testing
 
 ### ReRAM Utilization Strategy
 
